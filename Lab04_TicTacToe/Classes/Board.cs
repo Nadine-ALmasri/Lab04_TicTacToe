@@ -2,7 +2,7 @@
 
 namespace Lab04_TicTacToe.Classes
 {
-    class Board
+   public class Board
     {
         public string[,] GameBoard = new string[,]
         {

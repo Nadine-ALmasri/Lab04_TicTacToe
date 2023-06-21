@@ -2,14 +2,14 @@
 
 namespace Lab04_TicTacToe.Classes
 {
-    class Game
+   public class Game
     {
         //declares a private instance variable players of type Player[], which will store the two players of the game.
-        private Player[] players;
+        public Player[] players;
         //: This line declares a private instance variable currentPlayer of type Player, which represents the player who is currently taking their turn.
-        private Player currentPlayer;
+        public Player currentPlayer;
         //This line declares a private instance variable board of type Board, which represents the game board.
-        private Board board;
+        public Board board;
 
         //This line defines a constructor for the Game class.  
         public Game()
@@ -50,14 +50,17 @@ namespace Lab04_TicTacToe.Classes
                     Console.WriteLine("It's a draw!");
                 }
                 else
-                {//This line is responsible for switching the current player's turn between the two players
-                    currentPlayer = currentPlayer == players[0] ? players[1] : players[0];
+                {
+                    SwitchPlayers();
                     turnCount++;
                 }
             }
         }
-
-        private Player CreatePlayer(int playerNumber)
+        public void SwitchPlayers()
+        {
+            currentPlayer = currentPlayer == players[0] ? players[1] : players[0];
+        }
+        public Player CreatePlayer(int playerNumber)
         {
             Console.Write($"Enter Player {playerNumber} name: ");
             string name = Console.ReadLine();
@@ -84,7 +87,7 @@ namespace Lab04_TicTacToe.Classes
         }
 
 
-        private bool CheckForWinner()
+      public bool CheckForWinner()
         {
             string[,] gb = board.GameBoard;
             for (int i = 0; i < 3; i++)
@@ -103,4 +106,5 @@ namespace Lab04_TicTacToe.Classes
             return false;
         }
     }
+
 }

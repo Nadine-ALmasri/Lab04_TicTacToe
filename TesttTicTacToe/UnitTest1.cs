@@ -2,6 +2,8 @@ using System;
 using System.Numerics;
 using Lab04_TicTacToe;
 using Lab04_TicTacToe.Classes;
+using Newtonsoft.Json.Linq;
+using Xunit;
 
 namespace TesttTicTacToe
 {
@@ -68,12 +70,33 @@ namespace TesttTicTacToe
 
 
         [Fact]
-            public void YourOwnUniqueTest()
+        public void CheckForDraw()
+        {
+            // Arrange
+            Game game = new Game();
+            game.board = new Board();
+
+            // Set up the game board with a draw condition
+            game.board.GameBoard = new string[,]
             {
-                // Add your own unique test here to test a specific functionality or scenario of your game.
-                // For example, you could test the game's behavior when a draw condition is reached.
-            }
+        { "X", "O", "X" },
+        { "O", "X", "O" },
+        { "O", "X", "O" }
+            };
+
+            // Act
+            bool isDraw = !game.CheckForWinner();
+
+            // Assert
+            Assert.True(isDraw);
         }
 
-    }
+
+
+
+
+
+
+        }
+}
 
